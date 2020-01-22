@@ -8,5 +8,7 @@ echo -e "a=$a \n b=$b \n c=$c"
 
 #Performing the Arithmetic operation
 operation1=$((a + b * c))
+operation2=$((a * b + c))
 
 echo "((a + b * c)) = $operation1"
+echo "((a * b + c)) = $operation2"
