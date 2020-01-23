@@ -9,6 +9,9 @@ echo -e "a=$a \n b=$b \n c=$c"
 #declareing a dictionary
 declare -A dict
 
+ASC='>'
+DESC='<'
+
 #Performing the Arithmetic operation and store in into the dictionary
 dict[operation1]=$((a + b * c))
 dict[operation2]=$((a * b + c))
@@ -38,14 +41,15 @@ done
 echo "Array elements are: "${arr[@]}
 
 #sort array in descending
-function decSort()
+function sort()
 {
+	sign=$1
 	len=${#arr[@]}
 	for((i=0;i<len;i++))
 	do
 	  for((j=0;j<len;j++))
 	  do
-	     if [[ ((${arr[j]%.*} -lt ${arr[j+1]%.*})) ]]
+	     if (( $(echo "$((${arr[j]%.*})) $sign $((${arr[j+1]%.*}))" ) ))
 	     then
         	 temp=${arr[j]}
 	  		 arr[j]=${arr[j+1]}
@@ -56,7 +60,9 @@ function decSort()
 }
 
 #sort function calling
-decSort
+sort $DESC
+echo "Array After Descending Sort: "${arr[@]}
 
-echo "Array After Sort: "${arr[@]}
+sort $ASC
+echo "Array after Ascending Sort: "${arr[@]}
 
