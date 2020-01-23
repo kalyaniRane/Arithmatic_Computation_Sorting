@@ -10,8 +10,9 @@ echo -e "a=$a \n b=$b \n c=$c"
 operation1=$((a + b * c))
 operation2=$((a * b + c))
 operation3=$(echo "scale=1; $c + $a / $b" | bc)
-
+operation4=$(echo "$a % $b + $c" | bc)
 
 echo "((a + b * c)) = $operation1"
 echo "((a * b + c)) = $operation2"
 echo "((c + a / b)) = $operation3"
+echo "((a % b + c)) = $operation4"
