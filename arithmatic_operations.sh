@@ -1,4 +1,4 @@
-#!/bin/bash -x 
+#!/bin/bash -x
 
 echo "Welcome To Arithmatic Operations And Sorting"
 
@@ -36,3 +36,27 @@ done
 
 #print Array
 echo "Array elements are: "${arr[@]}
+
+#sort array in descending
+function decSort()
+{
+	len=${#arr[@]}
+	for((i=0;i<len;i++))
+	do
+	  for((j=0;j<len;j++))
+	  do
+	     if [[ ((${arr[j]%.*} -lt ${arr[j+1]%.*})) ]]
+	     then
+        	 temp=${arr[j]}
+	  		 arr[j]=${arr[j+1]}
+	  		 arr[j+1]=$temp
+	     fi
+	  done
+	done
+}
+
+#sort function calling
+decSort
+
+echo "Array After Sort: "${arr[@]}
+
