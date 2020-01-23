@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -x 
 
 echo "Welcome To Arithmatic Operations And Sorting"
 
@@ -6,13 +6,17 @@ read -p "Enter the three numbers : " a b c
 
 echo -e "a=$a \n b=$b \n c=$c"
 
-#Performing the Arithmetic operation
-operation1=$((a + b * c))
-operation2=$((a * b + c))
-operation3=$(echo "scale=1; $c + $a / $b" | bc)
-operation4=$(echo "$a % $b + $c" | bc)
+#declareing a dictionary
+declare -A dict
 
-echo "((a + b * c)) = $operation1"
-echo "((a * b + c)) = $operation2"
-echo "((c + a / b)) = $operation3"
-echo "((a % b + c)) = $operation4"
+#Performing the Arithmetic operation
+dict[operation1]=$((a + b * c))
+dict[operation2]=$((a * b + c))
+dict[operation3]=$(echo "scale=1; $c + $a / $b" | bc)
+dict[operation4]=$(echo "$a % $b + $c" | bc)
+
+for((i=1;i<5;i++))
+do
+		echo "dict[operation$i]=${dict[operation$i]}"
+done
+
